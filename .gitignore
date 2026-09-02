@@ -1,0 +1,29 @@
+# Large raw datasets
+data/*.json
+data/*.jsonl
+data/*.csv
+data/*.parquet
+data/*.gz
+
+# Processed and temporary data
+data/raw/
+data/processed/
+
+# Output files
+output/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files
+venv/
+env/
+.venv/
+
+# Operating system files
+.DS_Store
+Thumbs.db
