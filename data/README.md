@@ -19,6 +19,4 @@ Expected local layout after running the notebook:
 The repeated `raw/raw` component results from passing the repository-relative Hugging
 Face filename to `hf_hub_download()` beneath the notebook's `RAW_DIR`.
 
-Do not upload the raw or processed review data to GitHub. Retain the source URL,
-retrieval date, checksums where feasible, and all preparation steps needed to
-reproduce the analysis.
+
