@@ -1,55 +1,54 @@
-# MIT805 Big Data Project
+# MIT 805 Big Data Semester Project (2026)
 
-## Part 1: Data Collection and Analysis
+Part 1 analyses the **Amazon Reviews 2023 - Clothing, Shoes and Jewelry** category using PySpark. The selected raw review file is listed as 27.8 GB, satisfying the assignment's 25-40 GB raw-data requirement.
 
-Course: MIT805 – Big Data  
-Project: Big Data Semester Project  
-Part 1 Due Date: 3 September 2026
+## Repository layout
 
-## Project Overview
+```text
+.
+|-- README.md
+|-- requirements.txt
+|-- data/
+|   `-- README.md
+|-- notebooks/
+|   `-- part1_amazon_reviews_eda.ipynb
+|-- src/
+|-- output/
+|-- figures/
+`-- report/
+```
 
-This repository contains the work for Part 1 of the MIT805 Big Data Semester Project.
+## Run Part 1 in Google Colab
 
-The project is focusing on the collection, description, preparation, and exploratory analysis of the large publicly available dataset. 
-The analysis will then also evaluate of the dataset using the 7 Vs of Big Data and to discuss its potential business as well as societal value and limitations.
+The completed shared notebook is available in [Google Colab](https://colab.research.google.com/drive/1YJxi1HvbBoR6OcZEURPAQ9l5zU9wjLyg).
 
-## Dataset
+1. Open `notebooks/Data_Collection_and_Analysis_.ipynb` in Colab.
+2. Select a high-memory runtime if available.
+3. Run the cells in order. The download is large and may take considerable time.
+4. Confirm the notebook's measured sizes before using them in the report.
+5. Download the generated tables from `output/` and charts from `figures/`.
 
-The project is uses the Amazon Reviews 2023 dataset.
+The notebook downloads the raw source file, records its actual byte size, creates a line-safe processing subset of at least 3 GiB, and performs the substantive analysis with Spark. Pandas is used only for small aggregated results used in visualizations.
 
-The dataset contains of the  Amazon customer reviews as well as the product related information across multiple product categories.
+## Data source and use
 
-Dataset source:
+- Dataset: McAuley Lab, Amazon Reviews 2023
+- Category: Clothing, Shoes and Jewelry
+- Source: https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023
+- Raw file listing: https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/tree/main/raw/review_categories
+- Dataset paper: https://arxiv.org/abs/2403.03952
 
-https://amazon-reviews-2023.github.io/
+The maintainers state that the dataset is made available primarily for research and do not assign a standalone licence. Use it only for non-commercial academic analysis, cite the dataset paper, avoid attempts to re-identify users, and do not redistribute the raw data.
 
+## Reproducibility notes
 
-The information about the dataset, including of the source and instructions for the accessing the data, it is provided in the data/README.md file.
+- Large data files and generated outputs are deliberately excluded from Git.
+- Record the Colab runtime type, Spark version, run date, measured file sizes, and row counts in the final report.
+- Do not claim a result until its notebook cell has completed successfully.
 
-## Part 1 Objectives
+## Report and figures
 
-The objectives of Part 1 are to:
-
-1. Describe of the dataset and establishing of provenance as well as suitability for the academic use.
-2. Document of the Dataset size and characteristics including Provide details: source, raw, working and process of the sixe of dataset
-3. Discuss and prepared the data for analysis, and potential quality concerns such as well as data quality.
-4. Performing of the Exploratory Data Analysis (EDA)
-5. Analyzing of the dataset using the of the 7 Vs Big Data
-6. Discuss of the potential business or the societal value as well as the limitations of the dataset.
-
-## Project Structure
-
-
-MIT805-Big-Data-Project/
-│
-├── README.md
-├── requirements.txt
-│
-├── data/
-│   └── README.md
-│
-├── notebooks/
-├── src/
-├── output/
-├── figures/
-└── report/
+- `report/main.tex` contains the editable Overleaf source.
+- `report/MIT805_Part1_Report.pdf` is the compiled Part 1 report.
+- `figures/` contains the EDA figures used in the appendix.
+- `src/build_report_figures.py` reproduces the report figures from the aggregated results.

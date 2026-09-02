@@ -1,48 +1,20 @@
-# Data Documentation
+# Data directory
 
-## Dataset
+Raw data is not committed to GitHub.
 
-This project uses the Amazon Reviews 2023 dataset.
+The Part 1 notebook retrieves:
 
-The dataset contains Amazon product reviews and related information across multiple product categories.
+`raw/review_categories/Clothing_Shoes_and_Jewelry.jsonl`
 
-## Dataset Source
+from the McAuley Lab Amazon Reviews 2023 Hugging Face repository. The hosted file is listed as 27.8 GB. The notebook must record the exact downloaded size and create a line-safe processing subset of at least 3 GiB.
 
-Amazon Reviews 2023 Dataset:
+Expected local layout after running the notebook:
 
-https://amazon-reviews-2023.github.io/
-
-## Data Access
-
-The dataset it is publicly available from the Amazon Reviews 2023 dataset website.
-
-Due to the large size of the dataset the complete of the dataset will not be uploaded to this GitHub repository.
-
-The required dataset files will be accessed or downloaded from the official dataset source for analysis.
-
-## Dataset Files
-
-The final product categories and files used for this project will be documented after verifying that their combined size meets the requirements for Part 1 – Data Collection & Analysis.
-
-## Repository Policy
-
-Large dataset files should not be uploaded to GitHub.
-
-The following folders may contain large data files locally:
-
-- 'raw/'
-- 'processed/'
-
-Instructions for obtaining and loading the dataset will be maintained in this document.
-
-## Data Organisation
-
-The data used in this project will be organized as the follows:
-
+```text
 data/
-├── README.md
-├── raw/
-└── processed/
+|-- raw/Clothing_Shoes_and_Jewelry.jsonl
+`-- processed/Clothing_Shoes_and_Jewelry_3GiB.jsonl
+```
 
-- 'raw' contains the original dataset files.
-- 'processed/' contains cleaned or transformed data used during analysis.
+Do not upload the raw or processed review data to GitHub. Retain the source URL, retrieval date, checksums where feasible, and all preparation steps needed to reproduce the analysis.
+
