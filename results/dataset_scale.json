@@ -1,0 +1,11 @@
+{
+  "raw_dataset_definition": "Amazon Reviews 2023 - Clothing, Shoes and Jewelry raw reviews",
+  "hosted_file_bytes": 27810080533,
+  "hosted_file_GB_decimal": 27.81,
+  "displayed_source_size_GB": 27.8,
+  "retrieved_utc": "2026-09-02T22:02:04.431848+00:00",
+  "working_file_bytes": 27810080533,
+  "working_file_GB_decimal": 27.81,
+  "processing_file_bytes": 3221225482,
+  "processing_file_GB_decimal": 3.221
+}

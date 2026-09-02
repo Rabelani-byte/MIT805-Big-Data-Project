@@ -11,9 +11,10 @@ Part 1 analyses the **Amazon Reviews 2023 - Clothing, Shoes and Jewelry** catego
 |-- data/
 |   `-- README.md
 |-- notebooks/
-|   `-- part1_amazon_reviews_eda.ipynb
+|   `-- Data_Collection_and_Analysis_.ipynb
 |-- src/
-|-- output/
+|   `-- sync_notebook_artifacts.py
+|-- results/
 |-- figures/
 `-- report/
 ```
@@ -26,7 +27,8 @@ The completed shared notebook is available in [Google Colab](https://colab.resea
 2. Select a high-memory runtime if available.
 3. Run the cells in order. The download is large and may take considerable time.
 4. Confirm the notebook's measured sizes before using them in the report.
-5. Download the generated tables from `output/` and charts from `figures/`.
+5. Download the executed notebook and replace the copy in `notebooks/`.
+6. Run `python src/sync_notebook_artifacts.py` to synchronize its figures and evidence.
 
 The notebook downloads the raw source file, records its actual byte size, creates a line-safe processing subset of at least 3 GiB, and performs the substantive analysis with Spark. Pandas is used only for small aggregated results used in visualizations.
 
@@ -42,13 +44,14 @@ The maintainers state that the dataset is made available primarily for research 
 
 ## Reproducibility notes
 
-- Large data files and generated outputs are deliberately excluded from Git.
+- Large data files and temporary Spark outputs are deliberately excluded from Git.
+- Small executed evidence files in `results/` and report figures are versioned.
 - Record the Colab runtime type, Spark version, run date, measured file sizes, and row counts in the final report.
 - Do not claim a result until its notebook cell has completed successfully.
 
 ## Report and figures
 
-- `report/main.tex` contains the editable Overleaf source.
-- `report/MIT805_Part1_Report.pdf` is the compiled Part 1 report.
-- `figures/` contains the EDA figures used in the appendix.
-- `src/build_report_figures.py` reproduces the report figures from the aggregated results.
+- The Part 1 report is authored collaboratively in Overleaf; `report/README.md` records this workflow.
+- `figures/` contains all six EDA figures embedded in the executed notebook.
+- `results/` contains the measured scale, quality summary, and 7-V evidence.
+- `src/sync_notebook_artifacts.py` reproduces these tracked artifacts from the notebook.

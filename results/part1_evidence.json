@@ -1,0 +1,56 @@
+{
+  "volume": {
+    "raw_dataset_definition": "Amazon Reviews 2023 - Clothing, Shoes and Jewelry raw reviews",
+    "hosted_file_bytes": 27810080533,
+    "hosted_file_GB_decimal": 27.81,
+    "displayed_source_size_GB": 27.8,
+    "retrieved_utc": "2026-09-02T22:02:04.431848+00:00",
+    "working_file_bytes": 27810080533,
+    "working_file_GB_decimal": 27.81,
+    "processing_file_bytes": 3221225482,
+    "processing_file_GB_decimal": 3.221,
+    "processing_rows": 7231543,
+    "columns": 14
+  },
+  "velocity": {
+    "earliest_review": "1999-12-01 01:41:03",
+    "latest_review": "2023-03-25 20:39:13",
+    "years_observed": 24
+  },
+  "variety": {
+    "columns": [
+      "asin",
+      "helpful_vote",
+      "images",
+      "parent_asin",
+      "rating",
+      "text",
+      "timestamp",
+      "title",
+      "user_id",
+      "verified_purchase",
+      "review_time",
+      "review_year",
+      "text_length",
+      "title_length"
+    ],
+    "schema": "struct<asin:string,helpful_vote:bigint,images:array<struct<attachment_type:string,large_image_url:string,medium_image_url:string,small_image_url:string>>,parent_asin:string,rating:double,text:string,timestamp:bigint,title:string,user_id:string,verified_purchase:boolean,review_time:timestamp,review_year:int,text_length:int,title_length:int>"
+  },
+  "veracity": {
+    "rows": 7231543,
+    "invalid_or_null_rating": 0,
+    "negative_helpful_votes": 0,
+    "empty_review_text": 495,
+    "text_over_10000_chars": 18,
+    "earliest_review": "1999-12-01 01:41:03",
+    "latest_review": "2023-03-25 20:39:13",
+    "potential_duplicate_rows": 23544,
+    "potential_duplicate_pct": 0.3256
+  },
+  "limitations": [
+    "Reviews are voluntary and are not representative of all purchasers or users.",
+    "Pseudonymous identifiers and product-page merging complicate duplicate detection.",
+    "Ratings and helpful votes can be influenced by platform design, selection effects, or manipulation.",
+    "A 3 GiB line-safe prefix may differ temporally or compositionally from the full category file."
+  ]
+}

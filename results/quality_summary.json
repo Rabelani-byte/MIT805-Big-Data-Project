@@ -1,0 +1,11 @@
+{
+  "rows": 7231543,
+  "invalid_or_null_rating": 0,
+  "negative_helpful_votes": 0,
+  "empty_review_text": 495,
+  "text_over_10000_chars": 18,
+  "earliest_review": "1999-12-01 01:41:03",
+  "latest_review": "2023-03-25 20:39:13",
+  "potential_duplicate_rows": 23544,
+  "potential_duplicate_pct": 0.3256
+}
