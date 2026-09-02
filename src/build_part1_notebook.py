@@ -206,10 +206,30 @@ top_products = (reviews.groupBy("parent_asin")
                 .agg(F.count("*").alias("reviews"), F.avg("rating").alias("mean_rating"))
                 .orderBy(F.desc("reviews")).limit(20))
 
+rating_profile = (reviews.groupBy("rating")
+    .agg(F.count("*").alias("reviews"),
+         F.avg("text_length").alias("mean_text_length"),
+         F.expr("percentile_approx(text_length, 0.5)").alias("median_text_length"),
+         F.avg("helpful_vote").alias("mean_helpful_votes"),
+         F.avg(F.col("verified_purchase").cast("double")).alias("verified_share"))
+    .orderBy("rating"))
+
+verified_ratings = (reviews.groupBy("verified_purchase", "rating")
+    .count().orderBy("verified_purchase", "rating"))
+
+product_concentration = (reviews.groupBy("parent_asin").count()
+    .agg(F.count("*").alias("distinct_products"),
+         F.max("count").alias("largest_product_reviews"),
+         F.expr("percentile_approx(count, 0.5)").alias("median_reviews_per_product"),
+         F.expr("percentile_approx(count, 0.99)").alias("p99_reviews_per_product")))
+
 rating_counts.show()
 yearly.show(50, truncate=False)
 verified.show(truncate=False)
 top_products.show(20, truncate=False)
+rating_profile.show(truncate=False)
+verified_ratings.show(truncate=False)
+product_concentration.show(truncate=False)
 """),
     code("""sns.set_theme(style="whitegrid")
 
@@ -227,6 +247,42 @@ ax1.plot(yearly_pd["review_year"], yearly_pd["reviews"], color="#3569b7", marker
 ax1.set(title="Review volume over time", xlabel="Year", ylabel="Number of reviews")
 fig.tight_layout()
 fig.savefig(FIGURE_DIR / "review_volume_by_year.png", dpi=200)
+plt.show()
+
+fig, ax = plt.subplots(figsize=(9, 4.5))
+ax.plot(yearly_pd["review_year"], yearly_pd["mean_rating"], color="#c96b2c", marker="o", ms=3)
+ax.set(title="Average rating over time", xlabel="Year", ylabel="Mean rating", ylim=(3.5, 5.05))
+fig.tight_layout()
+fig.savefig(FIGURE_DIR / "mean_rating_by_year.png", dpi=200)
+plt.show()
+
+verified_pd = verified.toPandas().sort_values("verified_purchase")
+verified_pd["purchase_status"] = verified_pd["verified_purchase"].map({True: "Verified", False: "Unverified"})
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+sns.barplot(data=verified_pd, x="purchase_status", y="mean_rating", color="#3569b7", ax=axes[0])
+axes[0].set(title="Mean rating by purchase status", xlabel="", ylabel="Mean rating", ylim=(4.15, 4.30))
+sns.barplot(data=verified_pd, x="purchase_status", y="mean_helpful_votes", color="#c96b2c", ax=axes[1])
+axes[1].set(title="Mean helpful votes", xlabel="", ylabel="Votes per review")
+fig.tight_layout()
+fig.savefig(FIGURE_DIR / "verified_purchase_comparison.png", dpi=200)
+plt.show()
+
+profile_pd = rating_profile.toPandas()
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+sns.lineplot(data=profile_pd, x="rating", y="mean_text_length", marker="o", ax=axes[0])
+axes[0].set(title="Review length by rating", xlabel="Stars", ylabel="Mean characters")
+sns.lineplot(data=profile_pd, x="rating", y="mean_helpful_votes", marker="o", color="#c96b2c", ax=axes[1])
+axes[1].set(title="Helpfulness by rating", xlabel="Stars", ylabel="Mean helpful votes")
+fig.tight_layout()
+fig.savefig(FIGURE_DIR / "rating_length_helpfulness.png", dpi=200)
+plt.show()
+
+top_pd = top_products.toPandas().head(10).sort_values("reviews")
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.barh(top_pd["parent_asin"], top_pd["reviews"], color="#3569b7")
+ax.set(title="Ten most-reviewed parent products", xlabel="Reviews", ylabel="Parent ASIN")
+fig.tight_layout()
+fig.savefig(FIGURE_DIR / "top_products.png", dpi=200)
 plt.show()
 """),
     md("""## 7. Dataset-specific evidence for the 7 Vs
@@ -291,4 +347,3 @@ target = Path(__file__).resolve().parents[1] / "notebooks" / "part1_amazon_revie
 target.parent.mkdir(parents=True, exist_ok=True)
 target.write_text(json.dumps(notebook, indent=1, ensure_ascii=False), encoding="utf-8")
 print(target)
-
