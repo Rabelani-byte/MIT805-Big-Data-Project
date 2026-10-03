@@ -1,6 +1,6 @@
 # MIT 805 Big Data Semester Project (2026)
 
-Part 1 analyses the **Amazon Reviews 2023 - Clothing, Shoes and Jewelry** category using PySpark. The selected raw review file is listed as 27.8 GB, satisfying the assignment's 25-40 GB raw-data requirement.
+The project analyses the **Amazon Reviews 2023 - Clothing, Shoes and Jewelry** category using PySpark. Part 1 establishes provenance, scale, quality, and exploratory evidence. Part 2 uses distributed MapReduce-style processing to identify sufficiently reviewed parent products with elevated customer-experience risk.
 
 ## Repository layout
 
@@ -11,8 +11,10 @@ Part 1 analyses the **Amazon Reviews 2023 - Clothing, Shoes and Jewelry** catego
 |-- data/
 |   `-- README.md
 |-- notebooks/
-|   `-- Data_Collection_and_Analysis_.ipynb
+|   |-- Data_Collection_and_Analysis_.ipynb
+|   `-- Part_2_PySpark_MapReduce_Analysis.ipynb
 |-- src/
+|   |-- build_part2_notebook.py
 |   `-- sync_notebook_artifacts.py
 |-- results/
 |-- figures/
@@ -31,6 +33,16 @@ The completed shared notebook is available in [Google Colab](https://colab.resea
 6. Run `python src/sync_notebook_artifacts.py` to synchronize its figures and evidence.
 
 The notebook downloads the raw source file, records its actual byte size, creates a line-safe processing subset of at least 3 GiB, and performs the substantive analysis with Spark. Pandas is used only for small aggregated results used in visualizations.
+
+## Run Part 2 in Google Colab
+
+1. Open `notebooks/Part_2_PySpark_MapReduce_Analysis.ipynb` in Colab.
+2. Use the existing 3 GiB processing JSONL file if it was retained; otherwise run the documented download and line-safe subset cells.
+3. Run all cells in order. The notebook performs full-data Spark transformations and product aggregations, an explicit `map`/`reduceByKey` validation, a temporal join, risk ranking, physical-plan capture, and three visualizations.
+4. Confirm that `RDD/DataFrame aggregation mismatches` is `0`.
+5. Download the executed notebook and commit the small files from `/content/mit805_part2/output` and `/content/mit805_part2/figures`. Do not commit raw or processing data.
+
+**Part 2 analytical question:** Which sufficiently reviewed parent products show the greatest customer-experience risk when review volume, low-rating prevalence, helpful negative feedback, and recent rating change are considered together?
 
 ## Data source and use
 
