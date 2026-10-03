@@ -36,13 +36,17 @@ The notebook downloads the raw source file, records its actual byte size, create
 
 ## Run Part 2 in Google Colab
 
-1. Open `notebooks/Part_2_PySpark_MapReduce_Analysis.ipynb` in Colab.
+The executed shared notebook is available in [Google Colab](https://colab.research.google.com/drive/1RVfabw78yQw_yN5GHJmJzYkiTVJwuTCb).
+
+1. Open `notebooks/Part_2_PySpark_MapReduce_Analysis.ipynb` in Colab, or use the executed shared notebook above.
 2. Use the existing 3 GiB processing JSONL file if it was retained; otherwise run the documented download and line-safe subset cells.
 3. Run all cells in order. The notebook performs full-data Spark transformations and product aggregations, an explicit `map`/`reduceByKey` validation, a temporal join, risk ranking, physical-plan capture, and three visualizations.
 4. Confirm that `RDD/DataFrame aggregation mismatches` is `0`.
 5. Download the executed notebook and commit the small files from `/content/mit805_part2/output` and `/content/mit805_part2/figures`. Do not commit raw or processing data.
 
 **Part 2 analytical question:** Which sufficiently reviewed parent products show the greatest customer-experience risk when review volume, low-rating prevalence, helpful negative feedback, and recent rating change are considered together?
+
+The verified run processed **7,231,543 reviews** into **1,836,721 parent-product groups**. Applying the pre-declared threshold of at least 50 reviews retained **17,765 eligible products**. The explicit RDD `map`/`reduceByKey` output and DataFrame aggregation had **0 mismatches**. Measured evidence is versioned in `results/part2_evidence.json`, with the ten highest-ranked products in `results/part2_top_risk_products.csv`.
 
 ## Data source and use
 
@@ -66,4 +70,5 @@ The maintainers state that the dataset is made available primarily for research 
 - The Part 1 report is authored collaboratively in Overleaf; `report/README.md` records this workflow.
 - `figures/` contains all six EDA figures embedded in the executed notebook.
 - `results/` contains the measured scale, quality summary, and 7-V evidence.
+- Part 2 result evidence and the ranked product table are also stored in `results/`.
 - `src/sync_notebook_artifacts.py` reproduces these tracked artifacts from the notebook.

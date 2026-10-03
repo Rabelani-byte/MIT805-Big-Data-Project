@@ -268,7 +268,7 @@ execution_evidence = {
     "shuffle_partitions": spark.conf.get("spark.sql.shuffle.partitions"),
     "cached_review_partitions": reviews.rdd.getNumPartitions(),
     "executors_reported": int(executor_info),
-    "active_job_ids_after_actions": list(tracker.getActiveJobIds()),
+    "active_job_ids_after_actions": list(tracker.getActiveJobsIds()),
     "active_stage_ids_after_actions": list(tracker.getActiveStageIds()),
 }
 print(json.dumps(execution_evidence, indent=2))

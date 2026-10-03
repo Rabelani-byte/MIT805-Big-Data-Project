@@ -1,0 +1,35 @@
+{
+  "central_question": "Which sufficiently reviewed parent products show the greatest customer-experience risk when review volume, low-rating prevalence, helpful negative feedback, and recent rating change are considered together?",
+  "processing_file_bytes": 3221225482,
+  "processing_rows": 7231543,
+  "minimum_reviews_for_ranking": 50,
+  "products_after_reduce": 1836721,
+  "eligible_products": 17765,
+  "mapreduce_validation_mismatches": 0,
+  "risk_score_definition": "negative_share * log1p(review_count) * (1 + log1p(negative_helpful_votes)) * (1 + max(-rating_change, 0))",
+  "period_definition": {
+    "historical": "review_year <= 2020",
+    "recent": "2021 <= review_year <= 2023 (partial 2023)"
+  },
+  "spark_version": "4.0.0",
+  "shuffle_partitions": 64,
+  "top_product": {
+    "parent_asin": "B019VM3CPW",
+    "review_count": 408,
+    "mean_rating": 3.784313725490196,
+    "negative_share": 0.2622549019607843,
+    "negative_helpful_votes": 222,
+    "historical_rating": 3.788697788697789,
+    "recent_rating": 2.0,
+    "rating_change": -1.7886977886977888,
+    "risk_score": 28.17956519416704
+  },
+  "eligible_product_summary": {
+    "mean_review_count": 149.52704756543767,
+    "mean_rating": 4.286614308814528,
+    "mean_negative_share": 0.11136616301003867,
+    "mean_rating_change": -0.11802602269632104,
+    "median_risk_score": 1.6158178601188733,
+    "maximum_risk_score": 28.17956519416704
+  }
+}
