@@ -70,7 +70,8 @@ The maintainers state that the dataset is made available primarily for research 
 - The Part 1 report is authored collaboratively in Overleaf; `report/README.md` records this workflow.
 - The Part 2 report source is `report/MIT805_PART2_REPORT.tex`; the compiled seven-page PDF is `output/pdf/MIT805_PART2_GROUP_6_REPORT.pdf`.
 - The timed video walkthrough is in `report/PART2_VIDEO_SCRIPT.md`.
-- `figures/` contains all six EDA figures embedded in the executed notebook.
+- `figures/` contains the six Part 1 EDA figures and the four Part 2 analysis figures
+  embedded in the executed notebooks.
 - `results/` contains the measured scale, quality summary, and 7-V evidence.
 - Part 2 result evidence and the ranked product table are also stored in `results/`.
 - `src/sync_notebook_artifacts.py` reproduces these tracked artifacts from the notebook.
