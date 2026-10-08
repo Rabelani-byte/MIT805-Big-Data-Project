@@ -1,10 +1,10 @@
 # Report
 
-The Part 1 report is authored collaboratively in Overleaf. The compiled submission
-version is tracked as `MIT805_PROJECT_GROUP_6.pdf`.
+The Part 1 report is authored collaboratively in Overleaf. The main narrative is limited to two pages; supporting tables, figures, code output, and additional visualizations may be placed in an appendix.
 
-Part 2 report and video deliverables are still being prepared in Overleaf and are
-intentionally not included in this repository yet. The executed Part 2 notebook,
-figures, and evidence files are available for review and reproducibility.
+## Final Part 2 files
 
+- `MIT806_PROJECT_PART_II_GROUP_6.pdf` — final written report
+- `Group6_Implementation.mp4` — implementation video
 
+The raw review files are excluded because of their large size.
