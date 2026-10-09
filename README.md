@@ -23,8 +23,6 @@ Part 1 analyses the **Amazon Reviews 2023 - Clothing, Shoes and Jewelry** catego
 The completed Part 2 report and implementation video are kept in `report/`:
 
 - `report/MIT806_PROJECT_PART_II_GROUP_6.pdf` — final written report
-- `report/Group6_Implementation.mp4` — project implementation video
-
 The large raw review files are not included in this project.
 
 ## Run Part 1 in Google Colab
